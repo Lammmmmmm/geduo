@@ -1,11 +1,20 @@
-#ifndef __SYLAR_UTIL_HASH_UTIL_H__
-#define __SYLAR_UTIL_HASH_UTIL_H__
+/*
+ * @file: 
+ * @brief: 
+ * @author: Choupin
+ * @email: 593214609@qq.com
+ * @date: Do not edit
+ * @LastEditTime: 2020-06-14 21:32:25
+ * @LastEditors: Choupin
+ */ 
+#ifndef __GEDUO_UTIL_HASH_UTIL_H__
+#define __GEDUO_UTIL_HASH_UTIL_H__
 
 #include <stdint.h>
 #include <string>
 #include <vector>
 
-namespace sylar {
+namespace geduo {
 
 uint32_t murmur3_hash(const char * str, const uint32_t & seed = 1060627423);
 uint64_t murmur3_hash64(const char * str, const uint32_t & seed = 1060627423, const uint32_t& seed2 = 1050126127);

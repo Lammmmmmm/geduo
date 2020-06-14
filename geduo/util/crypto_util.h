@@ -1,13 +1,14 @@
-/**
- * @file crypto_util.h
- * @brief 加解密工具函数
- * @author sylar.yin
- * @email 564628276@qq.com
- * @date 2019-07-02
- * @copyright Copyright (c) 2019年 sylar.yin All rights reserved (www.sylar.top)
- */
-#ifndef __SYLAR_UTIL_CRYPTO_UTIL_H__
-#define __SYLAR_UTIL_CRYPTO_UTIL_H__
+/*
+ * @file: crypto_util.h
+ * @brief: 
+ * @author: Choupin
+ * @email: 593214609@qq.com
+ * @date: Do not edit
+ * @LastEditTime: 2020-06-14 21:34:29
+ * @LastEditors: Choupin
+ */ 
+#ifndef __GEDUO_UTIL_CRYPTO_UTIL_H__
+#define __GEDUO_UTIL_CRYPTO_UTIL_H__
 
 #include <openssl/ssl.h>
 #include <openssl/evp.h>
@@ -15,7 +16,7 @@
 #include <memory>
 #include <string>
 
-namespace sylar {
+namespace geduo {
 
 class CryptoUtil {
 public:

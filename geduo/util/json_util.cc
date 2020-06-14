@@ -1,7 +1,7 @@
 #include "json_util.h"
-#include "sylar/util.h"
+#include "../util.h"
 
-namespace sylar {
+namespace geduo {
 
 bool JsonUtil::NeedEscape(const std::string& v) {
     for(auto& c : v) {

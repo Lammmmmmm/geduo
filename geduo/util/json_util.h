@@ -1,11 +1,20 @@
-#ifndef __SYLAR_UTIL_JSON_UTIL_H__
-#define __SYLAR_UTIL_JSON_UTIL_H__
+/*
+ * @file: json_uitl.h
+ * @brief: 
+ * @author: Choupin
+ * @email: 593214609@qq.com
+ * @date: Do not edit
+ * @LastEditTime: 2020-06-14 21:27:23
+ * @LastEditors: Choupin
+ */ 
+#ifndef __GEDUO_UTIL_JSON_UTIL_H__
+#define __GEDUO_UTIL_JSON_UTIL_H__
 
 #include <string>
 #include <iostream>
 #include <json/json.h>
 
-namespace sylar {
+namespace geduo {
 
 class JsonUtil {
 public:
