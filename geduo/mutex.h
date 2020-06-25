@@ -1,8 +1,8 @@
 /*
  * @Author: choubin
  * @Date: 2020-06-14 22:52:57
- * @LastEditors: choubin
- * @LastEditTime: 2020-06-24 22:01:21
+ * @LastEditors: Choubin
+ * @LastEditTime: 2020-06-25 20:42:13
  * @Description: file content
  */ 
 
@@ -25,19 +25,35 @@ namespace geduo {
 /// @brief 信号量
 class Semaphore : Noncopyable {
 public:
-    Semaphore(uint32_t count = 0);
-    ~Semaphore();
+    Semaphore(uint32_t count = 0) {
+        if(sem_init(&m_semaphore, 0, count)) {
+            throw std::logic_error("sem_init error");
+        }
+    }
+    ~Semaphore() {
+        if(sem_destroy(&m_semaphore)) {
+            throw std::logic_error("sem_destory error");
+        }
+    }
 
     /// @brief 获取信号量
-    void wait();
+    void wait() {
+        if(sem_wait(&m_semaphore)) {
+            throw std::logic_error("sem_wait error");
+        }
+    }
 
     /// @brief 释放信号量
-    void notify();
+    void notify() {
+        if(sem_post(&m_semaphore)) {
+            throw std::logic_error("sem_post error");
+        }
+    }
 private:
     sem_t m_semaphore;    
 };
 
-/// @brief 局部锁
+/// @brief 局部锁模板类
 template<class T>
 struct ScopeLockImpl {
 public:
@@ -255,27 +271,6 @@ public:
 private:
     /// 原子状态
     volatile std::atomic_flag m_mutex;
-};
-
-class Scheduler;
-class Fiber;
-class FiberSemaphore : Noncopyable {
-public:
-    typedef Spinlock MutexType;
-
-    FiberSemaphore(size_t initial_concurrency = 0);
-    ~FiberSemaphore();
-
-    bool tryWait();
-    void wait();
-    void notify();
-
-    size_t getConcurrency() const { return m_concurrency;}
-    void reset() { m_concurrency = 0;}
-private:
-    MutexType m_mutex;
-    std::list<std::pair<Scheduler*, Fiber::ptr> > m_waiters;
-    size_t m_concurrency;
 };
 
 } // namespace geduo
